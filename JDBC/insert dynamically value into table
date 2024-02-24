@@ -1,0 +1,25 @@
+String q = "insert into table1(tName,tCity) values (?,?)";
+            PreparedStatement pstmt = con.prepareStatement(q);
+            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Enter Name :");
+            String name= br.readLine();
+            System.out.println("Enter City");
+            String city=br.readLine();
+            pstmt.setString(1, name);
+           // pstmt.setString(2, city);
+            pstmt.executeUpdate();
+            System.out.println("Inserted....");
+            String p="select * from table1";
+            ResultSet set=pstmt.executeQuery(p);
+            while(set.next()){
+                int id=set.getInt("tid");
+                String names=set.getNString("tName");
+                System.out.print(id+" ");
+                System.out.println(names);
+            }
+            con.close();
+        }
+        catch (Throwable e){
+             e.printStackTrace();}
+
+    }
