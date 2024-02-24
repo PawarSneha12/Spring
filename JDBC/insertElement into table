@@ -1,0 +1,12 @@
+ {  String q = "insert into table1(tName,tCity) values (?,?)";
+            PreparedStatement pstmt = con.prepareStatement(q);
+            pstmt.setString(1, "Ram");
+            pstmt.setString(2, "Shyam");
+            pstmt.executeUpdate();
+            System.out.println("Inserted....");
+            con.close();
+        }
+        catch (Throwable e){
+             e.printStackTrace();}
+
+    }
