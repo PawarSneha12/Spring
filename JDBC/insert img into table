@@ -1,0 +1,27 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
+import java.sql.*;
+import java.lang.*;
+public class FirstJDBC {
+    public static void main(String[] args) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/student";
+            String userName = "root";
+            String password = "Rama";
+            Connection con = DriverManager.getConnection(url, userName, password);
+            String p="insert  into images(pic) values(?)";
+            PreparedStatement pstmt=con.prepareStatement(p);
+            FileInputStream fi=new FileInputStream("ff.png");
+             //to take file input
+            pstmt.setBinaryStream(1,fi,fi.available());
+            //set data
+            pstmt.executeUpdate();
+System.out.println("pic insulted....");
+            con.close();
+        }
+        catch (Throwable e){
+             e.printStackTrace();}
+}}
