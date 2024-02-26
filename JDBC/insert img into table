@@ -12,6 +12,15 @@ public class FirstJDBC {
             String userName = "root";
             String password = "Rama";
             Connection con = DriverManager.getConnection(url, userName, password);
+
+String q="create table im(id int primary key auto_increment,pic longblob)";
+//            Statement stmt=con.createStatement();
+//            stmt.executeUpdate(q);
+//            System.out.println("Image Table has created....");
+
+
+
+
             String p="insert  into images(pic) values(?)";
             PreparedStatement pstmt=con.prepareStatement(p);
             FileInputStream fi=new FileInputStream("ff.png");
